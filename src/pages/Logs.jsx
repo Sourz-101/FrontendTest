@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-
+import { DisplaySetting } from "../store/DisplaySettingStore";
 import axios from "axios";
 const Logs = () => {
 
 
-  const {data} = useContext(DisplaySetting);
+  const {data,setData} = useContext(DisplaySetting);
+
+  console.log(data)
 
 
   const [allLogs, setAllLogs] = useState([]);
@@ -146,7 +148,7 @@ const Logs = () => {
         );
       })}
 
-      <h1>`${data}`</h1>
+      <h1 onClick={()=>setData('xyz')}>`${data}`</h1>
 
     </div>
   );
