@@ -5,7 +5,7 @@ export const DisplaySetting = createContext({
 });
 
 const DisplaySettingContextProvider = ({ children }) => {
-  const [data, setData] = useState("Empty");
+  const [data, setData] = useState("Working Fine");
 
   return (
     <DisplaySetting.Provider

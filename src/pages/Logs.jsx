@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 
 import axios from "axios";
+import { DisplaySetting } from "../store/DisplaySettingStore";
 const Logs = () => {
 
 
@@ -146,7 +147,7 @@ const Logs = () => {
         );
       })}
 
-      <h1>`${data}`</h1>
+      <h1>{`${data}`}</h1>
 
     </div>
   );
