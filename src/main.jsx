@@ -4,6 +4,7 @@ import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import router from "./routes/router.jsx";
 import axios from "axios";
+import DisplaySettingContextProvider from "./store/DisplaySettingStore.jsx";
 axios.defaults.withCredentials = true;
 
 ReactDOM.createRoot(document.getElementById("root")).render(
