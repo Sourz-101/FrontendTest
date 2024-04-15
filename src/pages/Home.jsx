@@ -1,9 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ReadingCard from "../components/Dashboard/ReadingCard";
 import ReadingCardMobile from "../components/Dashboard/ReadingCardMobile";
 import axios from "axios";
+import { DisplaySetting } from "../store/DisplaySettingStore";
 
 const Home = () => {
+
+  
+  const {data,setData} = useContext(DisplaySetting);
+  
+  const [globalData, setGlobalData] = useState(null);
+
+
   const [liveData, setLiveData] = useState([]);
   const [pv, setPv] = useState(0); // Correct initialization of state variables
   const [sv, setSv] = useState(0);
@@ -13,8 +21,13 @@ const Home = () => {
   const [amp2, setAmp2] = useState(0);
   const [ms, setMs] = useState(0);
 
+
+
+
+
   useEffect(() => {
     const fetchData = async () => {
+
       try {
         const response = await axios.get('http://ec2-35-154-187-94.ap-south-1.compute.amazonaws.com:3000/getdata');
         // const response = await axios.get('http://localhost:3000/getdata');
@@ -23,16 +36,21 @@ const Home = () => {
         // console.log(JSON.parse(datatoset))
         console.log("hiii data",datatoset)
         if (!datatoset) return;
+
+        setGlobalData(datatoset);
+        console.log(data);
         
+
+
         
         // console.log(datatoset["pv"])
-        setPv(datatoset.pv);
-        setSv(datatoset?.sv);
-        setAmp(datatoset?.amp);
-        setRpm(datatoset?.rpm);
-        setTemp(datatoset?.temp);
-        setAmp2(datatoset?.amp2);
-        setMs(datatoset?.ms);
+        setPv(datatoset[data.pv]);
+        setSv(datatoset[data.sv]);
+        setAmp(datatoset[data.amp]);
+        setRpm(datatoset[data.rpm]);
+        setTemp(datatoset[data.temp]);
+          setAmp2(datatoset[data.amp2]);
+        setMs(datatoset[data.ms]);
 
     
 

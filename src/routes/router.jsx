@@ -4,6 +4,7 @@ import Home from "../pages/Home"
 import Logs2 from "../pages/Logs2"
 import LogsLayout from "../layout/LogsLayout"
 import Logs from "../pages/Logs"
+import Setting from "../pages/Setting"
 
 const router = createBrowserRouter([
     {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
             {
                 path:'/alllogs',
                 element:<Logs/>
+            },
+            {
+                path:'/setting',
+                element:<Setting/>
             }
         ]
     },
@@ -29,7 +34,8 @@ const router = createBrowserRouter([
                 element:<Logs2/>
             }
         ]
-    }
+    },
+
 ])
 
 export default router
