@@ -11,6 +11,7 @@ const DisplaySettingContextProvider = ({ children }) => {
     <DisplaySetting.Provider
       value={{
         data,
+        setData
       }}
     >
       {children}
