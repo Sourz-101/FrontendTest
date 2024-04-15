@@ -1,16 +1,16 @@
 import { createContext, useState } from "react";
 
 export const DisplaySetting = createContext({
-  initial: "",
+  data: "",
 });
 
 const DisplaySettingContextProvider = ({ children }) => {
-  const [initial, setInitial] = useState("Empty");
+  const [data, setData] = useState("Empty");
 
   return (
     <DisplaySetting.Provider
       value={{
-        initial,
+        data,
       }}
     >
       {children}

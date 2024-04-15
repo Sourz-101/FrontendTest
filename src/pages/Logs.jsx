@@ -1,6 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+
 import axios from "axios";
 const Logs = () => {
+
+
+  const {data} = useContext(DisplaySetting);
+
+
   const [allLogs, setAllLogs] = useState([]);
 
   const [machineType, setMachineType] = useState("");
@@ -139,6 +145,9 @@ const Logs = () => {
           </div>
         );
       })}
+
+      <h1>`${data}`</h1>
+
     </div>
   );
 };
