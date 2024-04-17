@@ -48,6 +48,14 @@ const Setting = () => {
   const { data, setData } = useContext(DisplaySetting);
   
 
+ const default_data = {
+    pv: "pv",
+    sv: "sv",
+    temp: "temp",
+    amp1: "amp",
+    amp2: "amp2",
+    rpm: "rpm"
+  };
 
 
   
@@ -62,6 +70,7 @@ const Setting = () => {
         rpm: rpm,
       }
     ));
+  
 
 
     // strategic Logger
@@ -69,7 +78,16 @@ const Setting = () => {
     console.log("PV Selector", pv);
   };
 
-
+const updateDataToDefalut = () => {
+    setData((prevData) => ({ ...prevData, 
+        pv: default_data.pv,
+        sv: default_data.sv,
+        amp1: default_data.amp1,
+        amp2: default_data.amp2,
+        temp: default_data.temp,
+        rpm: default_data.rpm,
+      }
+    ));}
 
   // Context Logger
   const Logger = () => {
@@ -168,7 +186,9 @@ const Setting = () => {
 
   return (
     <div className="flex items-center flex-col">
-    <Link to={'/'}><button className="p-5 bg-red-400">Home</button></Link>
+    <Link to={'/'}><button className=" btn p-5 bg-red-400">Home</button></Link>
+    <button className="btn p-5 bg-blue-400" onClick={updateDataToDefalut}>Reset</button>
+      
       <h1 className="text-4xl m-10" onClick={Logger}>
         Hello World (Mapping Data Key)
       </h1>
