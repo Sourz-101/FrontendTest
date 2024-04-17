@@ -5,12 +5,12 @@ export const DisplaySetting = createContext();
 const DisplaySettingContextProvider = ({ children }) => {
   const [data, setData] = useState(
     {
-      pv: "",
-      sv: "",
-      temp: "",
-      amp1: "",
-      amp2: "",
-      rpm: ""
+      pv: "pv",
+      sv: "sv",
+      temp: "temp",
+      amp1: "amp",
+      amp2: "amp2",
+      rpm: "rpm"
     }
   );
 
