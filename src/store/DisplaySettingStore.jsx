@@ -1,25 +1,18 @@
 import { createContext, useState } from "react";
 
-export const DisplaySetting = createContext({
-  data: {
-    pv: "pv",
-    sv: "sv",
-    temp: "temp",
-    amp: "amp",
-    amp2: "amp2",
-    rpm: "rpm",
-  },
-});
+export const DisplaySetting = createContext();
 
 const DisplaySettingContextProvider = ({ children }) => {
-  const [data, setData] = useState({
-    pv: "spv",
-    sv: "sv",
-    temp: "tempu",
-    amp: "amp",
-    amp2: "amp2",
-    rpm: "rpm",
-  });
+  const [data, setData] = useState(
+    {
+      pv: "",
+      sv: "",
+      temp: "",
+      amp1: "",
+      amp2: "",
+      rpm: ""
+    }
+  );
 
   return (
     <DisplaySetting.Provider

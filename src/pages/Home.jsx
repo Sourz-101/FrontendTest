@@ -6,20 +6,22 @@ import { DisplaySetting } from "../store/DisplaySettingStore";
 
 const Home = () => {
 
-  
+  // Context data
   const {data,setData} = useContext(DisplaySetting);
+
   
-  const [globalData, setGlobalData] = useState(null);
+  // Context Logger
+  const Logger = () => {
+    console.log(data);
+  }
 
 
-  const [liveData, setLiveData] = useState([]);
-  const [pv, setPv] = useState(0); // Correct initialization of state variables
-  const [sv, setSv] = useState(0);
-  const [amp, setAmp] = useState(0);
-  const [rpm, setRpm] = useState(0);
-  const [temp, setTemp] = useState(0);
-  const [amp2, setAmp2] = useState(0);
-  const [ms, setMs] = useState(0);
+  const [pv, setPv] = useState(null); 
+  const [sv, setSv] = useState(null);
+  const [amp, setAmp] = useState(null);
+  const [rpm, setRpm] = useState(null);
+  const [temp, setTemp] = useState(null);
+  const [amp2, setAmp2] = useState(null);
 
 
 
@@ -30,27 +32,24 @@ const Home = () => {
 
       try {
         const response = await axios.get('http://ec2-35-154-187-94.ap-south-1.compute.amazonaws.com:3000/getdata');
-        // const response = await axios.get('http://localhost:3000/getdata');
-        const datatoset= JSON.parse(response.data);
-        console.log(response.data)
-        // console.log(JSON.parse(datatoset))
-        console.log("hiii data",datatoset)
-        if (!datatoset) return;
 
-        setGlobalData(datatoset);
-        console.log(data);
+        const dataToSet= JSON.parse(response.data);
+        
+          
+        console.log(dataToSet);
+          
+        if (!dataToSet) return;
+        
+        
         
 
-
+        setPv(dataToSet.pv);
+        setSv(dataToSet.sv);
+        setAmp(dataToSet.amp);
+        setRpm(dataToSet.rpm);
+        setTemp(dataToSet.temp);
+        setAmp2(dataToSet.amp2);
         
-        // console.log(datatoset["pv"])
-        setPv(datatoset[data.pv]);
-        setSv(datatoset[data.sv]);
-        setAmp(datatoset[data.amp]);
-        setRpm(datatoset[data.rpm]);
-        setTemp(datatoset[data.temp]);
-          setAmp2(datatoset[data.amp2]);
-        setMs(datatoset[data.ms]);
 
     
 
@@ -59,13 +58,12 @@ const Home = () => {
       }
     };
 
-    // Fetch live data initially and set up interval for subsequent updates
+    
     fetchData();
-    const interval = setInterval(fetchData, 500); // Fetch data every second
+    const interval = setInterval(fetchData, 10000);
 
-    return () => clearInterval(interval); // Cleanup interval on unmount
-  }, []); // Empty dependency array ensures this effect runs only once
-  // Empty dependency array ensures this effect runs only once
+    return () => clearInterval(interval);
+  }, []); 
 
   return (
     <div className="min-[375px]:flex">
@@ -79,6 +77,7 @@ const Home = () => {
             <h1
               className="heading3 mb-5"
               style={{ fontFamily: '"Montserrat", sans-serif' }}
+              onClick={Logger}
             >
               Heating Mixer
             </h1>
