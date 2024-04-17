@@ -3,6 +3,7 @@ import { DisplaySetting } from "../store/DisplaySettingStore";
 import MachineSelector from "../components/MachineSelector";
 import PropSelector from "../components/PropSelector";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Setting = () => {
 
@@ -167,6 +168,7 @@ const Setting = () => {
 
   return (
     <div className="flex items-center flex-col">
+    <Link to={'/'}><button className="p-5 bg-red-400">Home</button></Link>
       <h1 className="text-4xl m-10" onClick={Logger}>
         Hello World (Mapping Data Key)
       </h1>
