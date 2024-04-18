@@ -66,8 +66,8 @@ const Setting = () => {
     }));
 
     // strategic Logger
-    console.log("Selected: ", properties);
-    console.log("PV Selector", pv);
+    // console.log("Selected: ", properties);
+    // console.log("PV Selector", pv);
   };
 
   const updateDataToDefalut = () => {
@@ -95,14 +95,15 @@ const Setting = () => {
     setSelectedMachine(selectedOption);
   };
 
+
   // Function to get properties of selected machine
   const [properties, setProperties] = useState([]);
-
   const getProperties = (machineNumber) => {
     if (apiData[machineNumber] && apiData[machineNumber].RG) {
       setProperties(Object.keys(apiData[machineNumber].RG));
     }
   };
+
 
   //Fetching data from Endpoint
   useEffect(() => {
@@ -126,41 +127,41 @@ const Setting = () => {
   }, [selectedMachine]);
 
   // Variable to Map Selectd property with prop in Screen
-  const [pv, setPv] = useState(null);
-  const [sv, setSv] = useState(null);
-  const [amp1, setAmp1] = useState(null);
-  const [amp2, setAmp2] = useState(null);
-  const [temp, setTemp] = useState(null);
-  const [rpm, setRpm] = useState(null);
+  const [pv, setPv] = useState({});
+  const [sv, setSv] = useState({});
+  const [amp1, setAmp1] = useState({});
+  const [amp2, setAmp2] = useState({});
+  const [temp, setTemp] = useState({});
+  const [rpm, setRpm] = useState({});
 
   const handleSelectedPropPV = (selectedOption) => {
     console.log("Selected option for PV:", selectedOption);
-    setPv(selectedOption);
+    setPv({prop: selectedOption, machine: selectedMachine});
   };
 
   const handleSelectedPropSV = (selectedOption) => {
     console.log("Selected option for SV:", selectedOption);
-    setSv(selectedOption);
+    setSv({prop: selectedOption, machine: selectedMachine});
   };
 
   const handleSelectedPropAMP1 = (selectedOption) => {
     console.log("Selected option for AMP1:", selectedOption);
-    setAmp1(selectedOption);
+    setAmp1({prop: selectedOption, machine: selectedMachine});
   };
 
   const handleSelectedPropAMP2 = (selectedOption) => {
     console.log("Selected option for AMP2:", selectedOption);
-    setAmp2(selectedOption);
+    setAmp2({prop: selectedOption, machine: selectedMachine});
   };
 
   const handleSelectedPropTemp = (selectedOption) => {
     console.log("Selected option for Temp:", selectedOption);
-    setTemp(selectedOption);
+    setTemp({prop: selectedOption, machine: selectedMachine});
   };
 
   const handleSelectedPropRPM = (selectedOption) => {
     console.log("Selected option for RPM:", selectedOption);
-    setRpm(selectedOption);
+    setRpm({prop: selectedOption, machine: selectedMachine});
   };
 
   return (
