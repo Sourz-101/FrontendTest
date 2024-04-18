@@ -43,13 +43,14 @@ const Home = () => {
         
         
         
-
-        setPv(dataToSet[data?.pv]);
-        setSv(dataToSet[data?.sv]);
-        setAmp(dataToSet[data?.amp1]);
-        setRpm(dataToSet[data?.rpm]);
-        setTemp(dataToSet[data?.temp]);
-        setAmp2(dataToSet[data?.amp2]);
+console.log('datarespnce',dataToSet[data.machine].RG[data.pv])
+console.log('data',data.sv)
+        setPv(dataToSet[data?.machine].RG[data?.pv]);
+        setSv(dataToSet[data?.machine].RG[data?.sv]);
+        setAmp(dataToSet[data?.machine].RG[data?.temp]);
+        setRpm(dataToSet[data?.machine].RG[data?.pv]);
+        setTemp(dataToSet[data?.machine].RG[data?.pv]);
+        setAmp2(dataToSet[data?.machine].RG[data?.pv]);
         
 
     
