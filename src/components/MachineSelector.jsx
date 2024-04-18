@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-const MachineSelector = ({ array, onSelect }) => {
-  const [selectedOption, setSelectedOption] = useState("");
+const MachineSelector = ({ array, onSelect, currentVal }) => {
+  const [selectedOption, setSelectedOption] = useState(currentVal);
 
   const handleChange = (e) => {
     const selectedOption = e.target.value;

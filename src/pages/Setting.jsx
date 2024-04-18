@@ -205,6 +205,7 @@ const Setting = () => {
               {
                 <MachineSelector
                   array={machines}
+                  currentVal={pv.machine}
                   onSelect={(e)=>{setPv({...pv,machine:e})}}
                 />
               }
@@ -213,6 +214,7 @@ const Setting = () => {
               {
                 <PropSelector
                   array={apiData[pv?.machine]?.RG}
+                  currentVal={pv.props}
                   onSelect={(e)=>setPv({...pv,props:e})}
                 />
               }
@@ -224,6 +226,7 @@ const Setting = () => {
               {
                 <MachineSelector
                   array={machines}
+                  currentVal={sv.machine}
                   onSelect={(e)=>{setSv({...sv,machine:e})}}
                 />
               }
@@ -231,6 +234,7 @@ const Setting = () => {
             <td className="border border-gray-500 px-4 py-2">
               {
                 <PropSelector
+                currentVal={sv.props}
                   array={apiData[sv?.machine]?.RG}
                   onSelect={(e)=>setSv({...sv,props:e})}
                 />
@@ -243,6 +247,7 @@ const Setting = () => {
               {
                 <MachineSelector
                   array={machines}
+                  currentVal={amp.machine}
                   onSelect={(e)=>{setAmp({...amp,machine:e})}}
                 />
               }
@@ -250,6 +255,7 @@ const Setting = () => {
             <td className="border border-gray-500 px-4 py-2">
               {
                 <PropSelector
+                currentVal={amp.props}
                   array={apiData[amp?.machine]?.RG}
                   onSelect={(e)=>setAmp({...amp,props:e})}
                 />
@@ -262,6 +268,7 @@ const Setting = () => {
               {
                 <MachineSelector
                   array={machines}
+                  currentVal={amp2.machine}
                   onSelect={(e)=>{setAmp2({...amp2,machine:e})}}
                 />
               }
@@ -269,6 +276,7 @@ const Setting = () => {
             <td className="border border-gray-500 px-4 py-2">
               {
                 <PropSelector
+                currentVal={amp2.props}
                   array={apiData[amp2?.machine]?.RG}
                   onSelect={(e)=>setAmp2({...amp2,props:e})}
                 />
@@ -281,6 +289,7 @@ const Setting = () => {
               {
                 <MachineSelector
                   array={machines}
+                  currentVal={temp.machine}
                   onSelect={(e)=>{setTemp({...temp,machine:e})}}
                 />
               }
@@ -288,6 +297,7 @@ const Setting = () => {
             <td className="border border-gray-500 px-4 py-2">
               {
                 <PropSelector
+                currentVal={temp.props}
                   array={apiData[temp?.machine]?.RG}
                   onSelect={(e)=>setTemp({...temp,props:e})}
                 />
@@ -300,6 +310,7 @@ const Setting = () => {
               {
                 <MachineSelector
                   array={machines}
+                  currentVal={rpm.machine}
                   onSelect={(e)=>{setRpm({...rpm,machine:e})}}
                 />
               }
@@ -307,6 +318,7 @@ const Setting = () => {
             <td className="border border-gray-500 px-4 py-2">
               {
                 <PropSelector
+                currentVal={rpm.props}
                   array={apiData[rpm?.machine]?.RG}
                   onSelect={(e)=>setRpm({...rpm,props:e})}
                 />

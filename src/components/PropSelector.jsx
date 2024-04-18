@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-const PropSelector = ( { array, onSelect}) => {
+const PropSelector = ( { array, onSelect, currentVal}) => {
     console.log(array)
     if(!array) return;
-    const [selectedProp, setSelectedProp] = useState("");
+    const [selectedProp, setSelectedProp] = useState(currentVal);
 
     const handleChange = (e) => {
       const selectedProp = e.target.value;
