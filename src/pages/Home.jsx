@@ -44,12 +44,12 @@ const Home = () => {
         
         
 
-        setPv(dataToSet[data?.pv]);
-        setSv(dataToSet[data?.sv]);
-        setAmp(dataToSet[data?.amp1]);
-        setRpm(dataToSet[data?.rpm]);
-        setTemp(dataToSet[data?.temp]);
-        setAmp2(dataToSet[data?.amp2]);
+        setPv(dataToSet[data?.pv.porp]);
+        setSv(dataToSet[data?.sv.prop]);
+        setAmp(dataToSet[data?.amp1.prop]);
+        setRpm(dataToSet[data?.rpm.prop]);
+        setTemp(dataToSet[data?.temp.prop]);
+        setAmp2(dataToSet[data?.amp2.prop]);
         
 
     
