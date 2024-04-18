@@ -42,9 +42,9 @@ const Home = () => {
         if (!dataToSet) return;
         
         
-        
+        console.log(data[1])
 
-        setPv(dataToSet[data?.pv]);
+        setPv(dataToSet[data[1]["RG"]["Process Value"]]);
         setSv(dataToSet[data?.sv]);
         setAmp(dataToSet[data?.amp1]);
         setRpm(dataToSet[data?.rpm]);

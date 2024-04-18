@@ -6,52 +6,30 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const Setting = () => {
-  // const apiData = {
-  //   1: {
-  //     NAME: "Load Meter",
-  //     RG: {
-  //       "Process Value": 120,
-  //       "R1 Status": 45,
-  //       "R2 Status": 16,
-  //       "Set 1": 67,
-  //       "Set 2": 2001,
-  //     },
-  //   },
-  //   2: {
-  //     NAME: "MHT-9612M",
-  //     RG: {
-  //       Humidity: 622,
-  //       SetValue1: 331,
-  //       SetValue2: 492,
-  //       "Relay1 Mode": 560,
-  //       "Relay2 Mode": 230,
-  //       pressure: 20,
-  //       alt: 5004,
-  //     },
-  //   },
-  //   3: {
-  //     NAME: "Load Meter",
-  //     RG: {
-  //       "Process Value": 120,
-  //       "R1 Status": 45,
-  //       "R2 Status": 16,
-  //       "Set 1": 67,
-  //       "Set 2": 2001,
-  //     },
-  //   },
-  // };
+  const default_data = {
+      machine:1,
+      NAME: "Load Meter",
+      RG: {
+        "Process Value": 120,
+        "R1 Status": 45,
+        "R2 Status": 16,
+        "Set 1": 67,
+        "Set 2": 2001,
+      },
+  
+  };
 
   const { data, setData } = useContext(DisplaySetting);
   const [apiData, setApiData] = useState([]);
 
-  const default_data = {
-    pv: "pv",
-    sv: "sv",
-    temp: "temp",
-    amp1: "amp",
-    amp2: "amp2",
-    rpm: "rpm",
-  };
+  // const default_data = {
+  //   pv: "Process Value",
+  //   sv: "R1 Status",
+  //   temp: "R2 Status",
+  //   amp1: "Set 1",
+  //   amp2: "amp2",
+  //   rpm: "rpm",
+  // };
 
   // Context Updater
   const updateData = () => {
