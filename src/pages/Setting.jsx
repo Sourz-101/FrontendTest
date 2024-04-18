@@ -42,9 +42,7 @@ const Setting = () => {
   // };
 
   const { data, setData } = useContext(DisplaySetting);
-  const [apiData, setApiData]=useState(
-    []
-  );
+  const [apiData, setApiData] = useState([]);
 
   const default_data = {
     pv: "pv",
@@ -127,7 +125,6 @@ const Setting = () => {
     getProperties(selectedMachine);
   }, [selectedMachine]);
 
-  
   // Variable to Map Selectd property with prop in Screen
   const [pv, setPv] = useState(null);
   const [sv, setSv] = useState(null);
@@ -176,21 +173,21 @@ const Setting = () => {
 
   return (
     <div className="flex items-center flex-col">
-      <Link to={"/"}>
-        <button className=" btn p-5 bg-red-400">Home</button>
-      </Link>
-      <button className="btn p-5 bg-blue-400" onClick={updateDataToDefalut}>
-        Reset
-      </button>
+      <div>
+        <Link to={"/"}>
+          <button className=" btn p-5 bg-red-400 rounded-full m-2">Home</button>
+        </Link>
+        <button
+          className="btn p-5 bg-blue-400 rounded-full"
+          onClick={updateDataToDefalut}
+        >
+          Reset
+        </button>
+      </div>
 
       <h1 className="text-4xl m-10" onClick={Logger}>
         Hello World (Mapping Data Key)
       </h1>
-
-      <div className="mb-5">
-        Select Machine:{" "}
-        {<MachineSelector array={machines} onSelect={handleSelectedOption} />}
-      </div>
 
       <table className="table-auto border-collapse border border-gray-500">
         <thead>
@@ -198,12 +195,23 @@ const Setting = () => {
             <th className="border border-gray-500 px-4 py-2">
               Screen Property
             </th>
-            <th className="border border-gray-500 px-4 py-2">API Property</th>
+            <th className="border border-gray-500 px-4 py-2">Select Machine</th>
+            <th className="border border-gray-500 px-4 py-2">
+              Select API Property
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td className="border border-gray-500 px-4 py-2">PV</td>
+            <td className="border border-gray-500 px-4 py-2">
+              {
+                <MachineSelector
+                  array={machines}
+                  onSelect={handleSelectedOption}
+                />
+              }
+            </td>
             <td className="border border-gray-500 px-4 py-2">
               {
                 <PropSelector
@@ -217,6 +225,14 @@ const Setting = () => {
             <td className="border border-gray-500 px-4 py-2">SV</td>
             <td className="border border-gray-500 px-4 py-2">
               {
+                <MachineSelector
+                  array={machines}
+                  onSelect={handleSelectedOption}
+                />
+              }
+            </td>
+            <td className="border border-gray-500 px-4 py-2">
+              {
                 <PropSelector
                   array={properties}
                   onSelect={handleSelectedPropSV}
@@ -226,6 +242,14 @@ const Setting = () => {
           </tr>
           <tr>
             <td className="border border-gray-500 px-4 py-2">AMP1</td>
+            <td className="border border-gray-500 px-4 py-2">
+              {
+                <MachineSelector
+                  array={machines}
+                  onSelect={handleSelectedOption}
+                />
+              }
+            </td>
             <td className="border border-gray-500 px-4 py-2">
               {
                 <PropSelector
@@ -239,6 +263,14 @@ const Setting = () => {
             <td className="border border-gray-500 px-4 py-2">AMP2</td>
             <td className="border border-gray-500 px-4 py-2">
               {
+                <MachineSelector
+                  array={machines}
+                  onSelect={handleSelectedOption}
+                />
+              }
+            </td>
+            <td className="border border-gray-500 px-4 py-2">
+              {
                 <PropSelector
                   array={properties}
                   onSelect={handleSelectedPropAMP2}
@@ -250,6 +282,14 @@ const Setting = () => {
             <td className="border border-gray-500 px-4 py-2">Temp</td>
             <td className="border border-gray-500 px-4 py-2">
               {
+                <MachineSelector
+                  array={machines}
+                  onSelect={handleSelectedOption}
+                />
+              }
+            </td>
+            <td className="border border-gray-500 px-4 py-2">
+              {
                 <PropSelector
                   array={properties}
                   onSelect={handleSelectedPropTemp}
@@ -259,6 +299,14 @@ const Setting = () => {
           </tr>
           <tr>
             <td className="border border-gray-500 px-4 py-2">RPM</td>
+            <td className="border border-gray-500 px-4 py-2">
+              {
+                <MachineSelector
+                  array={machines}
+                  onSelect={handleSelectedOption}
+                />
+              }
+            </td>
             <td className="border border-gray-500 px-4 py-2">
               {
                 <PropSelector
