@@ -163,14 +163,6 @@ const Setting = () => {
     setRpm(selectedOption);
   };
 
-  /*
-  const [currentDataKey, setCurrentDataKey] = useState(null);
-  const [keyToMap, setKeyToMap] = useState(null);
-  const mapkey = () => {
-    setData({ ...data, [currentDataKey]: keyToMap });
-  };
-  */
-
   return (
     <div className="flex items-center flex-col">
       <div>
@@ -326,25 +318,6 @@ const Setting = () => {
       >
         Map To Screen
       </button>
-
-      {/* <select
-        className="m-5"
-        onChange={(e) => setCurrentDataKey(e.target.value)}
-      >
-        <option value="pv">pv</option>
-        <option value="sv">sv</option>
-        <option value="temp">temp</option>
-      </select>
-
-      <select className="m-5" onChange={(e) => setKeyToMap(e.target.value)}>
-        <option value="spv">spv</option>
-        <option value="nsv">nsv</option>
-        <option value="tempu">tempu</option>
-      </select>
-
-      <button onClick={mapkey} className="p-3 ml-5">
-        MAP
-      </button> */}
     </div>
   );
 };
