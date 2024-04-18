@@ -104,6 +104,7 @@ const Setting = () => {
     }
   };
 
+  //Fetching data from Endpoint
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -124,6 +125,7 @@ const Setting = () => {
     getProperties(selectedMachine);
   }, [selectedMachine]);
 
+  
   // Variable to Map Selectd property with prop in Screen
   const [pv, setPv] = useState(null);
   const [sv, setSv] = useState(null);
