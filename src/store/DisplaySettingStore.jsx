@@ -7,12 +7,12 @@ const DisplaySettingContextProvider = ({ children }) => {
     // Check if there is data in localStorage, if not, use default values
     const savedData = localStorage.getItem("displaySettings");
     return savedData ? JSON.parse(savedData) : {
-      pv: "pv",
-      sv: "sv",
-      temp: "temp",
-      amp1: "amp",
-      amp2: "amp2",
-      rpm: "rpm"
+      pv:{props:"Process Value",machine:"1"},
+      sv:{props:"R1 Status",machine:"1"},
+      amp:{props:"Humidity",machine:"2"},
+      amp2:{props:"SetValue2",machine:"2"},
+      temp:{props:"SetValue1",machine:"2"},
+      rpm:{props:"Set 2",machine:"1"},
     };
   });
 
