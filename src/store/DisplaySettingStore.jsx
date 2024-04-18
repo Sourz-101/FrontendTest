@@ -7,53 +7,18 @@ const DisplaySettingContextProvider = ({ children }) => {
     // Check if there is data in localStorage, if not, use default values
     const savedData = localStorage.getItem("displaySettings");
     return savedData ? JSON.parse(savedData) : {
-      "1": {
-        "NAME": "Load Meter",
-        "RG": {
-          "pv":"Process Value",
-          "rs":"R1 Status",
-          "rs2":"R2 Status",
-          "s1":"Set 1",
-          "s1":"Set 2"
-        }
-      },
-      "2": {
-        "NAME": "MHT-9612M",
-        "RG": {
-          "hd":"Humidity",
-          "sv1":"SetValue1",
-          "sv2":"SetValue2",
-          "rm1": "Relay1 Mode",
-          "rm2":"Relay2 Mode"
-        }
-      }
+      pv:{props:"Process Value",machine:"1"},
+      sv:{props:"R1 Status",machine:"1"},
+      amp:{props:"Humidity",machine:"2"},
+      amp2:{props:"SetValue2",machine:"2"},
+      temp:{props:"SetValue1",machine:"2"},
+      rpm:{props:"Set 2",machine:"1"},
     };
   });
 
   useEffect(() => {
     // Save data to localStorage whenever it changes
-    localStorage.setItem("displaySettings", JSON.stringify({
-      "1": {
-        "NAME": "Load Meter",
-        "RG": {
-          "pv":"Process Value",
-          "rs":"R1 Status",
-          "rs2":"R2 Status",
-          "s1":"Set 1",
-          "s1":"Set 2"
-        }
-      },
-      "2": {
-        "NAME": "MHT-9612M",
-        "RG": {
-          "hd":"Humidity",
-          "sv1":"SetValue1",
-          "sv2":"SetValue2",
-          "rm1": "Relay1 Mode",
-          "rm2":"Relay2 Mode"
-        }
-      }
-    }));
+    localStorage.setItem("displaySettings", JSON.stringify(data));
   }, [data]);
 
   return (

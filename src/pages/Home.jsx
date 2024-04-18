@@ -43,18 +43,14 @@ const Home = () => {
         
         
         
-console.log('datarespnce',data[1].RG.pv)
-console.log('data',data[1])
-        setPv(dataToSet[1].RG[data[1].RG.pv]);
-        setSv(dataToSet[1].RG[data[1].RG.rs]);
-        setAmp(dataToSet[1].RG[data[1].RG.rs2]);
-        setRpm(dataToSet[1].RG[data[1].RG.s1]);
-        setTemp(dataToSet[2].RG[data[2].RG.hd]);
-        setAmp2(dataToSet[2].RG[data[2].RG.sv1]);
-        
-
-    
-
+console.log('datarespnce',dataToSet[data.sv.machine].RG[data.sv.props])
+console.log('data',data.sv.props)
+        setPv(dataToSet[data.pv.machine].RG[data.pv.props]);
+        setSv(dataToSet[data.sv.machine].RG[data.sv.props]);
+        setAmp(dataToSet[data.amp.machine].RG[data.amp.props]);
+        setRpm(dataToSet[data.rpm.machine].RG[data.rpm.props]);
+        setTemp(dataToSet[data.temp.machine].RG[data.temp.props]);
+        setAmp2(dataToSet[data.amp2.machine].RG[data.amp2.props]);
       } catch (error) {
         console.error("Error fetching live data:", error);
       }

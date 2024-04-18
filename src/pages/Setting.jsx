@@ -45,12 +45,12 @@ const Setting = () => {
   const [apiData, setApiData] = useState([]);
   const [updatedData, setUpdatedData]=useState();
   const default_data = {
-    pv: "pv",
-    sv: "sv",
-    temp: "temp",
-    amp1: "amp",
-    amp2: "amp2",
-    rpm: "rpm",
+    pv:{props:"Process Value",machine:"1"},
+      sv:{props:"R1 Status",machine:"1"},
+      amp:{props:"Humidity",machine:"2"},
+      amp2:{props:"SetValue2",machine:"2"},
+      temp:{props:"SetValue1",machine:"2"},
+      rpm:{props:"Set 2",machine:"1"},
   };
 
   // Context Updater
@@ -59,12 +59,14 @@ const Setting = () => {
       ...prevData,
       pv: pv,
       sv: sv,
-      amp1: amp1,
+      amp: amp,
       amp2: amp2,
       temp: temp,
       rpm: rpm,
     }));
-
+    console.log(
+      'dat set'
+    )
     // strategic Logger
     // console.log("Selected: ", properties);
     // console.log("PV Selector", pv);
@@ -75,11 +77,13 @@ const Setting = () => {
       ...prevData,
       pv: default_data.pv,
       sv: default_data.sv,
-      amp1: default_data.amp1,
+      amp: default_data.amp,
       amp2: default_data.amp2,
       temp: default_data.temp,
       rpm: default_data.rpm,
     }));
+
+    
   };
 
   // Context Logger
@@ -127,41 +131,41 @@ const Setting = () => {
   }, [selectedMachine]);
 
   // Variable to Map Selectd property with prop in Screen
-  const [pv, setPv] = useState({});
-  const [sv, setSv] = useState({});
-  const [amp1, setAmp1] = useState({});
-  const [amp2, setAmp2] = useState({});
-  const [temp, setTemp] = useState({});
-  const [rpm, setRpm] = useState({});
+  const [pv, setPv] = useState(data.pv);
+  const [sv, setSv] = useState(data.sv);
+  const [amp, setAmp] = useState(data.amp);
+  const [amp2, setAmp2] = useState(data.amp2);
+  const [temp, setTemp] = useState(data.temp);
+  const [rpm, setRpm] = useState(data.rpm);
 
   const handleSelectedPropPV = (selectedOption) => {
     console.log("Selected option for PV:", selectedOption);
-    setPv({prop: selectedOption, machine: selectedMachine});
+    setPv({props: selectedOption, machine: selectedMachine});
   };
 
   const handleSelectedPropSV = (selectedOption) => {
     console.log("Selected option for SV:", selectedOption);
-    setSv({prop: selectedOption, machine: selectedMachine});
+    setSv({props: selectedOption, machine: selectedMachine});
   };
 
   const handleSelectedPropAMP1 = (selectedOption) => {
     console.log("Selected option for AMP1:", selectedOption);
-    setAmp1({prop: selectedOption, machine: selectedMachine});
+    setAmp({props: selectedOption, machine: selectedMachine});
   };
 
   const handleSelectedPropAMP2 = (selectedOption) => {
     console.log("Selected option for AMP2:", selectedOption);
-    setAmp2({prop: selectedOption, machine: selectedMachine});
+    setAmp2({props: selectedOption, machine: selectedMachine});
   };
 
   const handleSelectedPropTemp = (selectedOption) => {
     console.log("Selected option for Temp:", selectedOption);
-    setTemp({prop: selectedOption, machine: selectedMachine});
+    setTemp({props: selectedOption, machine: selectedMachine});
   };
 
   const handleSelectedPropRPM = (selectedOption) => {
     console.log("Selected option for RPM:", selectedOption);
-    setRpm({prop: selectedOption, machine: selectedMachine});
+    setRpm({props: selectedOption, machine: selectedMachine});
   };
 
   return (
