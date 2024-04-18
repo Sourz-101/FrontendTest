@@ -42,7 +42,9 @@ const Setting = () => {
   // };
 
   const { data, setData } = useContext(DisplaySetting);
-  const [apiData, setApiData]=useState(null);
+  const [apiData, setApiData]=useState(
+    []
+  );
 
   const default_data = {
     pv: "pv",
