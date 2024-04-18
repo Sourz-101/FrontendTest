@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { DisplaySetting } from "../store/DisplaySettingStore";
 import MachineSelector from "../components/MachineSelector";
 import PropSelector from "../components/PropSelector";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 const Setting = () => {
@@ -48,14 +47,14 @@ const Setting = () => {
   const { data, setData } = useContext(DisplaySetting);
   
 
- const default_data = {
-    pv: "pv",
-    sv: "sv",
-    temp: "temp",
-    amp1: "amp",
-    amp2: "amp2",
-    rpm: "rpm"
-  };
+  const default_data = {
+      pv: "pv",
+      sv: "sv",
+      temp: "temp",
+      amp1: "amp",
+      amp2: "amp2",
+      rpm: "rpm"
+    };
 
 
   
@@ -193,43 +192,49 @@ const updateDataToDefalut = () => {
         Hello World (Mapping Data Key)
       </h1>
 
-      <div className="mb-5">
-        Select Machine:{" "}
-        {<MachineSelector array={machines} onSelect={handleSelectedOption} />}
-      </div>
-
       <table className="table-auto border-collapse border border-gray-500">
         <thead>
           <tr>
             <th className="border border-gray-500 px-4 py-2">
               Screen Property
             </th>
-            <th className="border border-gray-500 px-4 py-2">API Property</th>
+            <th className="border border-gray-500 px-4 py-2">
+              Machine
+            </th>
+            <th className="border border-gray-500 px-4 py-2">
+              API Property
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td className="border border-gray-500 px-4 py-2">PV</td>
+            <td className="border border-gray-500 px-4 py-2">{<MachineSelector array={machines} onSelect={handleSelectedOption} />}</td>
             <td className="border border-gray-500 px-4 py-2">{<PropSelector array={properties} onSelect={handleSelectedPropPV} />}</td>
           </tr>
           <tr>
             <td className="border border-gray-500 px-4 py-2">SV</td>
+            <td className="border border-gray-500 px-4 py-2">{<MachineSelector array={machines} onSelect={handleSelectedOption} />}</td>
             <td className="border border-gray-500 px-4 py-2">{<PropSelector array={properties} onSelect={handleSelectedPropSV} />}</td>
           </tr>
           <tr>
             <td className="border border-gray-500 px-4 py-2">AMP1</td>
+            <td className="border border-gray-500 px-4 py-2">{<MachineSelector array={machines} onSelect={handleSelectedOption} />}</td>
             <td className="border border-gray-500 px-4 py-2">{<PropSelector array={properties} onSelect={handleSelectedPropAMP1} />}</td>
           </tr>
           <tr>
             <td className="border border-gray-500 px-4 py-2">AMP2</td>
+            <td className="border border-gray-500 px-4 py-2">{<MachineSelector array={machines} onSelect={handleSelectedOption} />}</td>
             <td className="border border-gray-500 px-4 py-2">{<PropSelector array={properties} onSelect={handleSelectedPropAMP2} />}</td>
           </tr>
           <tr>
             <td className="border border-gray-500 px-4 py-2">Temp</td>
+            <td className="border border-gray-500 px-4 py-2">{<MachineSelector array={machines} onSelect={handleSelectedOption} />}</td>
             <td className="border border-gray-500 px-4 py-2">{<PropSelector array={properties} onSelect={handleSelectedPropTemp}/>}</td>
           </tr>
           <tr>
             <td className="border border-gray-500 px-4 py-2">RPM</td>
+            <td className="border border-gray-500 px-4 py-2">{<MachineSelector array={machines} onSelect={handleSelectedOption} />}</td>
             <td className="border border-gray-500 px-4 py-2">{<PropSelector array={properties} onSelect={handleSelectedPropRPM} />}</td>
           </tr>
         </tbody>

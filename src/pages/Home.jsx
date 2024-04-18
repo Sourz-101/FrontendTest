@@ -3,6 +3,7 @@ import ReadingCard from "../components/Dashboard/ReadingCard";
 import ReadingCardMobile from "../components/Dashboard/ReadingCardMobile";
 import axios from "axios";
 import { DisplaySetting } from "../store/DisplaySettingStore";
+import { Link } from "react-router-dom";
 
 const Home = () => {
 
@@ -67,6 +68,8 @@ const Home = () => {
 
   return (
     <div className="min-[375px]:flex">
+        <Link to={'/setting'}><button className=" btn p-5 bg-blue-400 absolute rounded-3xl shadow-2xl m-2 hover:bg-blue-100">Home</button></Link>
+
       {/* LEFT PART */}
       <div className="w-1/2 bg-primary9 h-screen rounded-tr-2xl rounded-br-2xl flex flex-col max-[375px]:hidden">
         <div className="flex ms-2 mt-5 text-3xl text-primary3">
