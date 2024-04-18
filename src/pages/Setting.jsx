@@ -131,7 +131,7 @@ const Setting = () => {
   }, [selectedMachine]);
 
   // Variable to Map Selectd property with prop in Screen
-  const [pv, setPv] = useState(data.pv);
+  const [pv, setPv] = useState({machine:data.pv.machine, props:data.pv.props});
   const [sv, setSv] = useState(data.sv);
   const [amp, setAmp] = useState(data.amp);
   const [amp2, setAmp2] = useState(data.amp2);
@@ -200,20 +200,20 @@ const Setting = () => {
         </thead>
         <tbody>
           <tr>
-            <td className="border border-gray-500 px-4 py-2">PV</td>
+            <td className="border border-gray-500 px-4 py-2" onClick={()=>console.log(pv)}>PV</td>
             <td className="border border-gray-500 px-4 py-2">
               {
                 <MachineSelector
                   array={machines}
-                  onSelect={handleSelectedOption}
+                  onSelect={(e)=>{setPv({...pv,machine:e})}}
                 />
               }
             </td>
             <td className="border border-gray-500 px-4 py-2">
               {
                 <PropSelector
-                  array={properties}
-                  onSelect={handleSelectedPropPV}
+                  array={apiData[pv?.machine]?.RG}
+                  onSelect={(e)=>setPv({...pv,props:e})}
                 />
               }
             </td>
@@ -224,15 +224,15 @@ const Setting = () => {
               {
                 <MachineSelector
                   array={machines}
-                  onSelect={handleSelectedOption}
+                  onSelect={(e)=>{setSv({...sv,machine:e})}}
                 />
               }
             </td>
             <td className="border border-gray-500 px-4 py-2">
               {
                 <PropSelector
-                  array={properties}
-                  onSelect={handleSelectedPropSV}
+                  array={apiData[sv?.machine]?.RG}
+                  onSelect={(e)=>setSv({...sv,props:e})}
                 />
               }
             </td>
@@ -243,15 +243,15 @@ const Setting = () => {
               {
                 <MachineSelector
                   array={machines}
-                  onSelect={handleSelectedOption}
+                  onSelect={(e)=>{setAmp({...amp,machine:e})}}
                 />
               }
             </td>
             <td className="border border-gray-500 px-4 py-2">
               {
                 <PropSelector
-                  array={properties}
-                  onSelect={handleSelectedPropAMP1}
+                  array={apiData[amp?.machine]?.RG}
+                  onSelect={(e)=>setAmp({...amp,props:e})}
                 />
               }
             </td>
@@ -262,15 +262,15 @@ const Setting = () => {
               {
                 <MachineSelector
                   array={machines}
-                  onSelect={handleSelectedOption}
+                  onSelect={(e)=>{setAmp2({...amp2,machine:e})}}
                 />
               }
             </td>
             <td className="border border-gray-500 px-4 py-2">
               {
                 <PropSelector
-                  array={properties}
-                  onSelect={handleSelectedPropAMP2}
+                  array={apiData[amp2?.machine]?.RG}
+                  onSelect={(e)=>setAmp2({...amp2,props:e})}
                 />
               }
             </td>
@@ -281,15 +281,15 @@ const Setting = () => {
               {
                 <MachineSelector
                   array={machines}
-                  onSelect={handleSelectedOption}
+                  onSelect={(e)=>{setTemp({...temp,machine:e})}}
                 />
               }
             </td>
             <td className="border border-gray-500 px-4 py-2">
               {
                 <PropSelector
-                  array={properties}
-                  onSelect={handleSelectedPropTemp}
+                  array={apiData[temp?.machine]?.RG}
+                  onSelect={(e)=>setTemp({...temp,props:e})}
                 />
               }
             </td>
@@ -300,15 +300,15 @@ const Setting = () => {
               {
                 <MachineSelector
                   array={machines}
-                  onSelect={handleSelectedOption}
+                  onSelect={(e)=>{setRpm({...rpm,machine:e})}}
                 />
               }
             </td>
             <td className="border border-gray-500 px-4 py-2">
               {
                 <PropSelector
-                  array={properties}
-                  onSelect={handleSelectedPropRPM}
+                  array={apiData[rpm?.machine]?.RG}
+                  onSelect={(e)=>setRpm({...rpm,props:e})}
                 />
               }
             </td>
