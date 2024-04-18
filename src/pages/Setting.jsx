@@ -150,7 +150,7 @@ const Setting = () => {
 
     setSv({props: selectedOption, machine: selectedMachine});
 
-
+  }
   const handleSelectedPropAMP1 = (selectedOption) => {
     console.log("Selected option for AMP1:", selectedOption);
 
