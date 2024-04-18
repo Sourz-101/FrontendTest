@@ -8,7 +8,7 @@ const DisplaySettingContextProvider = ({ children }) => {
     const savedData = localStorage.getItem("displaySettings");
     return savedData ? JSON.parse(savedData) : {
       machine:1,
-      pv: "Initial Value",
+      pv: "Process Value",
       sv: "R1 Status",
       temp: "R2 Status",
       amp1: "Humidity",
@@ -21,7 +21,7 @@ const DisplaySettingContextProvider = ({ children }) => {
     // Save data to localStorage whenever it changes
     localStorage.setItem("displaySettings", JSON.stringify({
       machine:1,
-      pv: "Initial Value",
+      pv: "Process Value",
       sv: "R1 Status",
       temp: "R2 Status",
       amp1: "Humidity",
