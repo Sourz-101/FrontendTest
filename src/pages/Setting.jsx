@@ -131,6 +131,7 @@ const Setting = () => {
   }, [selectedMachine]);
 
   // Variable to Map Selectd property with prop in Screen
+
   const [pv, setPv] = useState({machine:data.pv.machine, props:data.pv.props});
   const [sv, setSv] = useState(data.sv);
   const [amp, setAmp] = useState(data.amp);
@@ -141,31 +142,41 @@ const Setting = () => {
   const handleSelectedPropPV = (selectedOption) => {
     console.log("Selected option for PV:", selectedOption);
     setPv({props: selectedOption, machine: selectedMachine});
+
   };
 
   const handleSelectedPropSV = (selectedOption) => {
     console.log("Selected option for SV:", selectedOption);
+
     setSv({props: selectedOption, machine: selectedMachine});
-  };
+
 
   const handleSelectedPropAMP1 = (selectedOption) => {
     console.log("Selected option for AMP1:", selectedOption);
+
     setAmp({props: selectedOption, machine: selectedMachine});
+
   };
 
   const handleSelectedPropAMP2 = (selectedOption) => {
     console.log("Selected option for AMP2:", selectedOption);
+
     setAmp2({props: selectedOption, machine: selectedMachine});
+
   };
 
   const handleSelectedPropTemp = (selectedOption) => {
     console.log("Selected option for Temp:", selectedOption);
+
     setTemp({props: selectedOption, machine: selectedMachine});
+
   };
 
   const handleSelectedPropRPM = (selectedOption) => {
     console.log("Selected option for RPM:", selectedOption);
+
     setRpm({props: selectedOption, machine: selectedMachine});
+
   };
 
   return (
