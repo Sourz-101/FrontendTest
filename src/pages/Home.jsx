@@ -1,3 +1,4 @@
+
 import React, { useContext, useEffect, useState } from "react";
 import ReadingCard from "../components/Dashboard/ReadingCard";
 import ReadingCardMobile from "../components/Dashboard/ReadingCardMobile";
@@ -26,6 +27,7 @@ const Home = () => {
   const [amp2, setAmp2] = useState('~');
   const [vol1, setVol1] = useState('~');
   const [vol2, setVol2] = useState('~');
+  const [status, setStatus]=useState(false)
 
 
 
@@ -60,16 +62,19 @@ const Home = () => {
         setAmp2(nullUndefinedChecker(dataToSet[data.amp2.machine].RG[data.amp2.props]));
         setVol1(nullUndefinedChecker(dataToSet[data.vol1.machine].RG[data.vol1.props]));
         setVol2(nullUndefinedChecker(dataToSet[data.vol2.machine].RG[data.vol2.props]));
+        setStatus(Number(dataToSet?.machineStatus))
       } catch (error) {
         console.error("Error fetching live data:", error);
       }
     };
 
     fetchData();
-    const interval = setInterval(fetchData, 5000);
+    const interval = setInterval(fetchData, 1000);
 
     return () => clearInterval(interval);
   }, []); 
+
+  
 
   return (
     <div className="min-[375px]:flex">
@@ -270,17 +275,25 @@ const Home = () => {
           </h1>
 
           <div className="flex gap-10 flex-wrap self-center">
-            <div className="bg-green3 rounded-xl flex-center w-[30%] py-5 px-10">
-              <h1
+            
+              {status ? <div className="bg-green3 rounded-xl flex-center w-[30%] py-5 px-10"> <h1
                 className="text-grey1 heading1"
                 style={{
                   fontFamily: '"Montserrat", sans-serif',
                 }}
               >
                 ON
-              </h1>
-            </div>
-
+              </h1> </div>:
+              <div className="bg-red-700 rounded-xl flex-center w-[30%] py-5 px-10">
+              <h1
+                className="text-grey1 heading1"
+                style={{
+                  fontFamily: '"Montserrat", sans-serif',
+                }}
+              >
+                OFF
+              </h1> </div>
+              }
             <div className="self-center">
               <h1
                 className="text-grey8 mb-3 body2"
@@ -356,15 +369,11 @@ const Home = () => {
           </h1>
 
           <div className="flex">
-            <div className="bg-green3rounded-xl flex-center px-8 py-4">
-              <h1
-                className="text-grey1 heading1 max-[375px]:text-4xl"
-                style={{
-                  fontFamily: '"Montserrat", sans-serif',
-                }}
-              >
-                ON
-              </h1>
+            <div className=" flex-center px-8 py-4">
+              {
+
+                status ? <div> Hello on</div> : <div> Hello of</div>
+              }
             </div>
 
             <div className="self-center ms-5">
@@ -395,3 +404,4 @@ const Home = () => {
 };
 
 export default Home;
+
