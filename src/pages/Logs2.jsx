@@ -3,6 +3,7 @@ import DrawerListItem from "../components/LogsScreen/DrawerListItem";
 
 import { DatePicker, TimePicker, Dropdown, Layout, theme, Menu } from "antd";
 import LogsTable from "../components/LogsScreen/LogsTable";
+import { Link } from "react-router-dom";
 
 const items = [
   {
@@ -126,6 +127,8 @@ const App = () => {
         width="270"
         collapsedWidth="110"
       >
+        
+        <Link to={'/'}>
         <div className="w-full h-[4rem] bg-primary10 flex items-center">
           <h1
             className={`heading3 text-grey1 ms-4 ${
@@ -135,6 +138,7 @@ const App = () => {
             Floor Mill
           </h1>
         </div>
+        </Link>
 
         <div className="drawer-options mt-5">
           <h1 className="body3 text-grey3 ms-2 mb-4">Dashboard</h1>
