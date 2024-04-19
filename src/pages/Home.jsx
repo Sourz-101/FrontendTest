@@ -18,14 +18,14 @@ const Home = () => {
   }
 
 
-  const [pv, setPv] = useState('--'); 
-  const [sv, setSv] = useState('--');
-  const [amp, setAmp] = useState('--');
-  const [rpm, setRpm] = useState('--');
-  const [temp, setTemp] = useState('--');
-  const [amp2, setAmp2] = useState('--');
-  const [vol1, setVol1] = useState('--');
-  const [vol2, setVol2] = useState('--');
+  const [pv, setPv] = useState('~'); 
+  const [sv, setSv] = useState('~');
+  const [amp, setAmp] = useState('~');
+  const [rpm, setRpm] = useState('~');
+  const [temp, setTemp] = useState('~');
+  const [amp2, setAmp2] = useState('~');
+  const [vol1, setVol1] = useState('~');
+  const [vol2, setVol2] = useState('~');
 
 
 
@@ -73,7 +73,7 @@ const Home = () => {
 
   return (
     <div className="min-[375px]:flex">
-      <div className="flex absolute mx-12 mt-3">
+      <div className="flex absolute mt-20">
         <Link to={'/setting'}><button className=" btn p-2 bg-blue-700 rounded-3xl m-1 hover:bg-gray-500 text-gray-100 outline-black">Setting</button></Link>
         <Link to={'/logs'}><button className=" btn p-2 bg-blue-700 rounded-3xl m-1 hover:bg-gray-500 text-gray-100 outline-black">Logs</button></Link>
       </div>
@@ -119,14 +119,6 @@ const Home = () => {
               // cardWidth="w-[70%]"
               // cardMargin="me-[5rem]"
             />
-            <ReadingCard
-              titleAbbrv="V"
-              titleFull="Set Voltage"
-              reading={vol1+" V"}
-              bodyText="text-grey8"
-              // cardWidth="w-[70%]"
-              // cardMargin="me-[5rem]"
-            />
           </div>
 
           <div className="p-4 rounded-xl flex flex-col gap-5 m-3 w-[65%]">
@@ -146,6 +138,15 @@ const Home = () => {
               // cardWidth="w-[70%]"
               // cardMargin="me-[5rem]"
             />
+            <ReadingCard
+              titleAbbrv="V"
+              titleFull="Voltage"
+              reading={vol1+" V"}
+              bodyText="text-grey1"
+              // cardWidth="w-[70%]"
+              // cardMargin="me-[5rem]"
+            />
+            
           </div>
         </div>
       </div>
@@ -190,14 +191,6 @@ const Home = () => {
               // cardWidth="w-[70%]"
               // cardMargin="me-[5rem]"
             />
-            <ReadingCardMobile
-              titleAbbrv="V"
-              titleFull="Set Voltage"
-              reading={vol1+" V"}
-              bodyText="text-grey8"
-              // cardWidth="w-[70%]"
-              // cardMargin="me-[5rem]"
-            />
           </div>
 
           <div className="p-4 rounded-xl flex flex-col justify-center gap-3 w-[50%]">
@@ -213,6 +206,14 @@ const Home = () => {
               titleAbbrv="RPM"
               titleFull="Speed"
               reading={rpm+" A"}
+              bodyText="text-grey1"
+              // cardWidth="w-[70%]"
+              // cardMargin="me-[5rem]"
+            />
+            <ReadingCardMobile
+              titleAbbrv="V"
+              titleFull="Voltage"
+              reading={amp+" A"}
               bodyText="text-grey1"
               // cardWidth="w-[70%]"
               // cardMargin="me-[5rem]"
@@ -254,7 +255,7 @@ const Home = () => {
           <ReadingCard
             titleAbbrv="V"
             titleFull="Voltage"
-            reading={vol2+" A"}
+            reading={vol2+" V"}
             bodyText="text-grey8"
             extrasBody="me-[4rem]"
           />
@@ -337,7 +338,7 @@ const Home = () => {
           />
           <ReadingCardMobile
             titleAbbrv="V"
-            titleFull="Currrent"
+            titleFull="Voltage"
             reading={vol2+" V"}
             bodyText="text-grey8"
             extrasBody="flex-wrap justify-center"
@@ -355,7 +356,7 @@ const Home = () => {
           </h1>
 
           <div className="flex">
-            <div className="bg-green3 rounded-xl flex-center px-8 py-4">
+            <div className="bg-green3rounded-xl flex-center px-8 py-4">
               <h1
                 className="text-grey1 heading1 max-[375px]:text-4xl"
                 style={{

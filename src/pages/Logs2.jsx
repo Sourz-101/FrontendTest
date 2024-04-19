@@ -4,6 +4,9 @@ import DrawerListItem from "../components/LogsScreen/DrawerListItem";
 import { DatePicker, TimePicker, Dropdown, Layout, theme, Menu } from "antd";
 import LogsTable from "../components/LogsScreen/LogsTable";
 import { Link } from "react-router-dom";
+import PersonIcon from '@mui/icons-material/Person';
+
+
 
 const items = [
   {
@@ -135,7 +138,7 @@ const App = () => {
               collapsed ? "body2" : "" // Apply text-sm class when collapsed
             }`}
           >
-            Floor Mill
+            JOGINDRA
           </h1>
         </div>
         </Link>
@@ -143,24 +146,24 @@ const App = () => {
         <div className="drawer-options mt-5">
           <h1 className="body3 text-grey3 ms-2 mb-4">Dashboard</h1>
           <DrawerListItem
-            icon="public\Overview.png"
+            icon="Overview.png"
             heading="Overview"
             collapsed={collapsed}
           />
           <DrawerListItem
-            icon="public\Records.png"
+            icon="Records.png"
             heading="Records"
             collapsed={collapsed}
           />
 
           <h1 className="body3 text-grey3 ms-2 mb-4">Monitoring</h1>
           <DrawerListItem
-            icon="public\Machine Profile.png"
+            icon="Machine Profile.png"
             heading="Machine Profile"
             collapsed={collapsed}
           />
           <DrawerListItem
-            icon="public\Downtime.png"
+            icon="Downtime.png"
             heading="Downtime"
             collapsed={collapsed}
           />
@@ -206,13 +209,15 @@ const App = () => {
                 className="profile-card flex gap-3 items-center hover:bg-primary9 py-1 px-2 focus:bg-primary9 rounded-md"
                 tabindex="0"
               >
-                <img
-                  src="public\Pic 3.jpg"
+                {/* <img
+                import PersonIcon from '@mui/icons-material/Person';
+                  src="PersonIcon"
                   alt=""
                   className="size-10 rounded-md"
-                />
+                /> */}
+                <PersonIcon color="primary" fontsize="large"  />
                 <div className="profile-card-body text-grey1">
-                  <h1 className="body3">Dhruv Panjali</h1>
+                  <h1 className="body3"> User </h1>
                   <h2 className="secondry1">Admin</h2>
                 </div>
               </div>
