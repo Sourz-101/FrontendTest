@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DrawerListItem from "../components/LogsScreen/DrawerListItem";
 
 import { DatePicker, TimePicker, Dropdown, Layout, theme, Menu } from "antd";
 import LogsTable from "../components/LogsScreen/LogsTable";
 import { Link } from "react-router-dom";
 import PersonIcon from '@mui/icons-material/Person';
+import axios from "axios";
 
 
 
@@ -104,8 +105,13 @@ const { Sider, Content } = Layout;
 const { RangePicker } = DatePicker;
 
 const App = () => {
+
+  const [logs, setLogs]=useState([]);
+
+
   const [current, setCurrent] = useState("mail");
   const [collapsed, setCollapsed] = useState(false);
+  
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -119,6 +125,22 @@ const App = () => {
     console.log(e);
     setCurrent(e.key);
   };
+
+  useEffect(()=>{
+    const fetchLogs= async()=>{
+     try {
+       const logResponse= await axios.get('http://ec2-35-154-187-94.ap-south-1.compute.amazonaws.com:3000/getlogs');
+       console.log('response ', logResponse.data);
+ 
+       setLogs(logResponse.data);
+ 
+ 
+     } catch (error) {
+       console.log(error);
+     }
+    }
+    fetchLogs();
+   },[])
 
   return (
     <Layout className="min-h-screen">
