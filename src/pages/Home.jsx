@@ -18,20 +18,20 @@ const Home = () => {
   }
 
 
-  const [pv, setPv] = useState(null); 
-  const [sv, setSv] = useState(null);
-  const [amp, setAmp] = useState(null);
-  const [rpm, setRpm] = useState(null);
-  const [temp, setTemp] = useState(null);
-  const [amp2, setAmp2] = useState(null);
-  const [vol1, setVol1] = useState(null);
-  const [vol2, setVol2] = useState(null);
+  const [pv, setPv] = useState('--'); 
+  const [sv, setSv] = useState('--');
+  const [amp, setAmp] = useState('--');
+  const [rpm, setRpm] = useState('--');
+  const [temp, setTemp] = useState('--');
+  const [amp2, setAmp2] = useState('--');
+  const [vol1, setVol1] = useState('--');
+  const [vol2, setVol2] = useState('--');
 
 
 
   const nullUndefinedChecker = (value) => {
     if(value === undefined ||  value === null) 
-      return '-';
+      return '--';
     else 
       return value;
   }
