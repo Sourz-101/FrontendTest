@@ -51,6 +51,8 @@ const Setting = () => {
       amp2:{props:"SetValue2",machine:"2"},
       temp:{props:"SetValue1",machine:"2"},
       rpm:{props:"Set 2",machine:"1"},
+      vol1:{props:"SetValue1",machine:"2"},
+      vol2:{props:"R1 Status",machine:"1"},
   };
 
   // Context Updater
@@ -63,13 +65,12 @@ const Setting = () => {
       amp2: amp2,
       temp: temp,
       rpm: rpm,
+      vol1: vol1,
+      vol2: vol2,
     }));
     console.log(
       'dat set'
     )
-    // strategic Logger
-    // console.log("Selected: ", properties);
-    // console.log("PV Selector", pv);
   };
 
   const updateDataToDefalut = () => {
@@ -81,9 +82,9 @@ const Setting = () => {
       amp2: default_data.amp2,
       temp: default_data.temp,
       rpm: default_data.rpm,
+      vol1: default_data.vol1,
+      vol2: default_data.vol2,
     }));
-
-    
   };
 
   // Context Logger
@@ -138,63 +139,26 @@ const Setting = () => {
   const [amp2, setAmp2] = useState(data.amp2);
   const [temp, setTemp] = useState(data.temp);
   const [rpm, setRpm] = useState(data.rpm);
+  const [vol1, setVol1] = useState(data.vol1);
+  const [vol2, setVol2] = useState(data.vol2);
 
-  const handleSelectedPropPV = (selectedOption) => {
-    console.log("Selected option for PV:", selectedOption);
-    setPv({props: selectedOption, machine: selectedMachine});
-
-  };
-
-  const handleSelectedPropSV = (selectedOption) => {
-    console.log("Selected option for SV:", selectedOption);
-
-    setSv({props: selectedOption, machine: selectedMachine});
-
-  }
-  const handleSelectedPropAMP1 = (selectedOption) => {
-    console.log("Selected option for AMP1:", selectedOption);
-
-    setAmp({props: selectedOption, machine: selectedMachine});
-
-  };
-
-  const handleSelectedPropAMP2 = (selectedOption) => {
-    console.log("Selected option for AMP2:", selectedOption);
-
-    setAmp2({props: selectedOption, machine: selectedMachine});
-
-  };
-
-  const handleSelectedPropTemp = (selectedOption) => {
-    console.log("Selected option for Temp:", selectedOption);
-
-    setTemp({props: selectedOption, machine: selectedMachine});
-
-  };
-
-  const handleSelectedPropRPM = (selectedOption) => {
-    console.log("Selected option for RPM:", selectedOption);
-
-    setRpm({props: selectedOption, machine: selectedMachine});
-
-  };
 
   return (
     <div className="flex items-center flex-col">
       <div>
         <Link to={"/"}>
-          <button className=" btn p-5 bg-red-400 rounded-full m-2">Home</button>
+          <button className=" btn p-5 bg-red-400 hover:bg-red-300 hover:rounded-xl rounded-full m-2">Home</button>
         </Link>
         <button
-          className="btn p-5 bg-blue-400 rounded-full"
+          className="btn p-5 bg-blue-400 hover:bg-blue-300 hover:rounded-xl rounded-full"
           onClick={updateDataToDefalut}
         >
           Reset
         </button>
       </div>
 
-      <h1 className="text-4xl m-10" onClick={Logger}>
-        Hello World (Mapping Data Key)
+      <h1 className="text-4xl mx-auto mb-10" onClick={Logger}>
+        Mapping Data Key
       </h1>
 
       <table className="table-auto border-collapse border border-gray-500">
@@ -253,7 +217,7 @@ const Setting = () => {
             </td>
           </tr>
           <tr>
-            <td className="border border-gray-500 px-4 py-2">AMP1</td>
+            <td className="border border-gray-500 px-4 py-2">AMP C</td>
             <td className="border border-gray-500 px-4 py-2">
               {
                 <MachineSelector
@@ -274,7 +238,7 @@ const Setting = () => {
             </td>
           </tr>
           <tr>
-            <td className="border border-gray-500 px-4 py-2">AMP2</td>
+            <td className="border border-gray-500 px-4 py-2">AMP H</td>
             <td className="border border-gray-500 px-4 py-2">
               {
                 <MachineSelector
@@ -336,12 +300,55 @@ const Setting = () => {
               }
             </td>
           </tr>
+          <tr>
+            <td className="border border-gray-500 px-4 py-2">Vol C</td>
+            <td className="border border-gray-500 px-4 py-2">
+              {
+                <MachineSelector
+                  array={machines}
+                  currentVal={vol1.machine}
+                  onSelect={(e)=>{setVol1({...vol1,machine:e})}}
+                />
+              }
+            </td>
+            <td className="border border-gray-500 px-4 py-2">
+              {
+                <PropSelector
+                currentVal={vol1.props}
+                  array={apiData[vol1?.machine]?.RG}
+                  onSelect={(e)=>setVol1({...vol1,props:e})}
+                />
+              }
+            </td>
+          </tr>
+          <tr>
+            <td className="border border-gray-500 px-4 py-2">Vol H</td>
+            <td className="border border-gray-500 px-4 py-2">
+              {
+                <MachineSelector
+                  array={machines}
+                  currentVal={vol2.machine}
+                  onSelect={(e)=>{setVol2({...vol2,machine:e})}}
+                />
+              }
+            </td>
+            <td className="border border-gray-500 px-4 py-2">
+              {
+                <PropSelector
+                currentVal={vol2.props}
+                  array={apiData[vol2?.machine]?.RG}
+                  onSelect={(e)=>setVol2({...vol2,props:e})}
+                />
+              }
+            </td>
+          </tr>
+          
         </tbody>
       </table>
 
       <button
         type="button"
-        className="text-white bg-green-700 hover:bg-green-800 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 m-3"
+        className="text-white bg-green-700 hover:bg-green-800 hover:rounded-lg font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 m-3"
         onClick={updateData}
       >
         Map To Screen

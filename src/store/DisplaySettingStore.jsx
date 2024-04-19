@@ -13,6 +13,8 @@ const DisplaySettingContextProvider = ({ children }) => {
       amp2:{props:"SetValue2",machine:"2"},
       temp:{props:"SetValue1",machine:"2"},
       rpm:{props:"Set 2",machine:"1"},
+      vol1:{props:"Set 2", machine:"1"},
+      vol2:{props:"Humidity",machine:"2"}
     };
   });
 

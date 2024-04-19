@@ -4,6 +4,7 @@ import ReadingCardMobile from "../components/Dashboard/ReadingCardMobile";
 import axios from "axios";
 import { DisplaySetting } from "../store/DisplaySettingStore";
 import { Link } from "react-router-dom";
+import SettingsIcon from '@mui/icons-material/Settings';
 
 const Home = () => {
 
@@ -23,10 +24,17 @@ const Home = () => {
   const [rpm, setRpm] = useState(null);
   const [temp, setTemp] = useState(null);
   const [amp2, setAmp2] = useState(null);
+  const [vol1, setVol1] = useState(null);
+  const [vol2, setVol2] = useState(null);
 
 
 
-
+  const nullUndefinedChecker = (value) => {
+    if(value === undefined ||  value === null) 
+      return '-';
+    else 
+      return value;
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,31 +49,34 @@ const Home = () => {
           
         if (!dataToSet) return;
         
-        
-        
-console.log('datarespnce',dataToSet[data.sv.machine].RG[data.sv.props])
-console.log('data',data.sv.props)
-        setPv(dataToSet[data.pv.machine].RG[data.pv.props]);
-        setSv(dataToSet[data.sv.machine].RG[data.sv.props]);
-        setAmp(dataToSet[data.amp.machine].RG[data.amp.props]);
-        setRpm(dataToSet[data.rpm.machine].RG[data.rpm.props]);
-        setTemp(dataToSet[data.temp.machine].RG[data.temp.props]);
-        setAmp2(dataToSet[data.amp2.machine].RG[data.amp2.props]);
+
+          console.log('datarespnce',dataToSet[data.sv.machine].RG[data.sv.props]);
+          console.log('data',data);
+        setPv(nullUndefinedChecker(dataToSet[data.pv.machine].RG[data.pv.props]));
+        setSv(nullUndefinedChecker(dataToSet[data.sv.machine].RG[data.sv.props]));
+        setAmp(nullUndefinedChecker(dataToSet[data.amp.machine].RG[data.amp.props]));
+        setRpm(nullUndefinedChecker(dataToSet[data.rpm.machine].RG[data.rpm.props]));
+        setTemp(nullUndefinedChecker(dataToSet[data.temp.machine].RG[data.temp.props]));
+        setAmp2(nullUndefinedChecker(dataToSet[data.amp2.machine].RG[data.amp2.props]));
+        setVol1(nullUndefinedChecker(dataToSet[data.vol1.machine].RG[data.vol1.props]));
+        setVol2(nullUndefinedChecker(dataToSet[data.vol2.machine].RG[data.vol2.props]));
       } catch (error) {
         console.error("Error fetching live data:", error);
       }
     };
 
-    
     fetchData();
-    const interval = setInterval(fetchData, 10000);
+    const interval = setInterval(fetchData, 5000);
 
     return () => clearInterval(interval);
   }, []); 
 
   return (
     <div className="min-[375px]:flex">
-        <Link to={'/setting'}><button className=" btn p-5 bg-blue-400 absolute rounded-3xl shadow-2xl m-2 hover:bg-blue-100">Setting</button></Link>
+      <div className="flex absolute mx-12 mt-3">
+        <Link to={'/setting'}><button className=" btn p-2 bg-blue-700 rounded-3xl m-1 hover:bg-gray-500 text-gray-100 outline-black">Setting</button></Link>
+        <Link to={'/logs'}><button className=" btn p-2 bg-blue-700 rounded-3xl m-1 hover:bg-gray-500 text-gray-100 outline-black">Logs</button></Link>
+      </div>
 
       {/* LEFT PART */}
       <div className="w-1/2 bg-primary9 h-screen rounded-tr-2xl rounded-br-2xl flex flex-col max-[375px]:hidden">
@@ -95,7 +106,7 @@ console.log('data',data.sv.props)
             <ReadingCard
               titleAbbrv="PV."
               titleFull="Present Value"
-              reading={pv+" °C"}
+              reading={pv +" °C"}
               bodyText="text-grey8"
               // cardWidth="w-[70%]"
               // cardMargin="me-[5rem]"
@@ -104,6 +115,14 @@ console.log('data',data.sv.props)
               titleAbbrv="SV."
               titleFull="Set Value"
               reading={sv+" °C"}
+              bodyText="text-grey8"
+              // cardWidth="w-[70%]"
+              // cardMargin="me-[5rem]"
+            />
+            <ReadingCard
+              titleAbbrv="V"
+              titleFull="Set Voltage"
+              reading={vol1+" V"}
               bodyText="text-grey8"
               // cardWidth="w-[70%]"
               // cardMargin="me-[5rem]"
@@ -171,6 +190,14 @@ console.log('data',data.sv.props)
               // cardWidth="w-[70%]"
               // cardMargin="me-[5rem]"
             />
+            <ReadingCardMobile
+              titleAbbrv="V"
+              titleFull="Set Voltage"
+              reading={vol1+" V"}
+              bodyText="text-grey8"
+              // cardWidth="w-[70%]"
+              // cardMargin="me-[5rem]"
+            />
           </div>
 
           <div className="p-4 rounded-xl flex flex-col justify-center gap-3 w-[50%]">
@@ -221,6 +248,13 @@ console.log('data',data.sv.props)
             titleAbbrv="AMP."
             titleFull="Current"
             reading={amp2+" A"}
+            bodyText="text-grey8"
+            extrasBody="me-[4rem]"
+          />
+          <ReadingCard
+            titleAbbrv="V"
+            titleFull="Voltage"
+            reading={vol2+" A"}
             bodyText="text-grey8"
             extrasBody="me-[4rem]"
           />
@@ -298,6 +332,13 @@ console.log('data',data.sv.props)
             titleAbbrv="AMP."
             titleFull="Currrent"
             reading={amp2+" A"}
+            bodyText="text-grey8"
+            extrasBody="flex-wrap justify-center"
+          />
+          <ReadingCardMobile
+            titleAbbrv="V"
+            titleFull="Currrent"
+            reading={vol2+" V"}
             bodyText="text-grey8"
             extrasBody="flex-wrap justify-center"
           />
